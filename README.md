@@ -1,2 +1,2 @@
-# notes_app
+# Notes App
 An app to make notes
