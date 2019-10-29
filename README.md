@@ -21,5 +21,5 @@ So I can see all the information in the note
 ```
 
 # Minimum Viable Product 
-*Can see a list of notes
-*Can create a note
+* Can see a list of notes
+* Can create a note
