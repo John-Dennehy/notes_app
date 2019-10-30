@@ -1,32 +1,46 @@
 "use strict";
 
-function listenFor(element, event, callBack) {
-  element.addEventListener(event, function () {
-    if (typeof callBack === "function") { callBack() }
-  });
-}
+(function(exports) {
 
-function getNote() {
-  var text = document.getElementById('note_content').value
-  return text
-}
-
-function addNote() {
-  var note = getNote()
-  if (!isEmpty(note)) {
-    notebook.add(note)
-    var notes = notebook.all()
-    View.refresh(notes)
+  function Interface(button, textbox, ) {
+    this.button = button
+    this.textbox = textbox
+    this.listenFor()
   }
-}
 
-function isEmpty(text) {
-  if (text.trim() === "" || text === null) {
-    return true
+  Interface.prototype = {
+    listenFor: function(){
+      var self = this
+      this.button.addEventListener('click', function () {
+        self.addNote()
+      });
+    },
+
+    getNote: function(){
+      var text = this.textbox.value;
+      return text;
+    },
+
+    addNote: function(){
+      var note = this.getNote();
+      if (!this.isEmpty(note)) {
+        notebook.add(note);
+        var notes = notebook.all();
+        View.refresh(notes);
+      }
+    },
+
+    isEmpty: function(text){
+      if (text.trim() === "" || text === null) {
+        return true
+      }
+    }
   }
-}
+
+  exports.Interface = Interface
+})(this)
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log("I'm listening");
-  listenFor(document.getElementById('create_button'), 'click', addNote)
+  new Interface(document.getElementById('create_button'), document.getElementById('note_content'))
+  // listenFor(document.getElementById('create_button'), 'click', addNote)
 });
