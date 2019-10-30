@@ -15,7 +15,8 @@ function addNote() {
   var note = getNote()
   if (!isEmpty(note)) {
     Notebook.add(note)
-    View.refresh()
+    var notes = Notebook.all()
+    View.refresh(notes)
   }
 }
 
