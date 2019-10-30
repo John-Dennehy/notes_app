@@ -18,7 +18,7 @@
 
   function Demand(value) {
     var li = this.li
-    this.statement = value.toString()
+    this.statement = value
     if (this instanceof Demand) {
       this.value = value
     } else {
