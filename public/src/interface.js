@@ -1,28 +1,31 @@
 "use strict";
 
-function listenFor(element, action, callBack, callBackParameter) {
-  element.addEventListener(action, function() {
-  callBack(callBackParameter)
-});
+function listenFor(element, event, callBack) {
+  element.addEventListener(event, function () {
+    if (typeof callBack === "function") { callBack() }
+  });
+}
+
+function getNote() {
+  var text = document.getElementById('note_content').value
+  return text
+}
+
+function addNote() {
+  var note = getNote()
+  if (!isEmpty(note)) {
+    Notebook.add(note)
+    View.refresh()
+  }
+}
+
+function isEmpty(text) {
+  if (text.trim() === "" || text === null) {
+    return true
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log( "I'm listening" );
-
-  listenFor(document.getElementById('create_button'), 'click', alert,'hello world' )
+  console.log("I'm listening");
+  listenFor(document.getElementById('create_button'), 'click', addNote)
 });
-
-var notes = ["hello", "Bye", "smelly", "cool", "monkeys"]
-
-var list = function listNotes() {
-  var list = document.getElementById('populate_notes')
-  console.log(notes)
-  notes.forEach(function(note){
-    var listNote = document.createElement('li');
-    listNote.appendChild(document.createTextNode(note));
-    list.appendChild(listNote);
-  })
-}
-
-list()
-
