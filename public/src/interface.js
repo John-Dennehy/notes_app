@@ -1,34 +1,28 @@
 "use strict";
 
-function listenFor(element, action, callBack, callBackParameter = null) {
-  element.addEventListener(action, function () {
-    callBack(callBackParameter)
+function listenFor(element, event, callBack) {
+  element.addEventListener(event, function () {
+    if (typeof callBack === "function") { callBack() }
   });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log("I'm listening");
-  listenFor(document.getElementById('create_button'), 'click', addToList)
-});
 
 function getNote() {
   var text = document.getElementById('note_content').value
   return text
 }
 
-function clearNoteBox() {
-  document.getElementById('note_content').value = ""
+function addNote() {
+  if !isEmpty(getNote()) {
+    Notebook.add(note)
+    View.refresh()
+  }
 }
 
-function addToList() {
-  var note = getNote()
-  var list = document.getElementById('populate_notes')
-  list.appendChild(createNoteHTML(note));
-  clearNoteBox()
+function isEmpty(text) {
+  if (text.trim() === "" || text === null)
 }
 
-function createNoteHTML(note) {
-  var htmlElement = document.createElement('li');
-  htmlElement.appendChild(document.createTextNode(note));
-  return htmlElement
-}
+document.addEventListener('DOMContentLoaded', function () {
+  console.log("I'm listening");
+  listenFor(document.getElementById('create_button'), 'click', addNote)
+});
