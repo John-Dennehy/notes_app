@@ -1,3 +1,4 @@
+
 Describe("Notebook", function(){
 
   Describe('all', function(){
@@ -10,10 +11,13 @@ Describe("Notebook", function(){
 
   Describe('add', function(){
     It('creates a new note', function() {
-      var notes = new Notebook
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      var notes = new Notebook(SpyFactory)
       notes.add("Hello World");
-      
-      Demand("Hello World").toBeAVassalOf(notes.all())
+      Demand(spy).toBeAVassalOf(notes.all())
     });
   });
   

@@ -1,21 +1,31 @@
+  
 "use strict";
 
-var Notebook = (function () {
+(function (exports) {
   // variable is private
-  var notes = [];
   // Expose these functions via an interface while hiding
   // the implementation of the module within the function() block
-  return {
-    all: function() {
-      return notes;
-    },
-
-    add: function(text) {
-      return notes.push([text]);
-    },
-
-    get: function(index) {
-      return notes[index];
-    }
+  function Notebook(NoteFactory) {
+    this.noteFactory = NoteFactory || Note
+    this.notes = []; 
   }
-})();
+  Notebook.prototype = {
+    all: function() {
+      return this.notes;
+    },
+
+    
+    add: function(text) {
+      var note = new this.noteFactory(text);
+      return this.notes.push(note);
+    },
+    
+    get: function(index) {
+      return this.notes[index];
+    }
+  },
+
+  exports.Notebook = Notebook
+}) (this);
+
+var notebook = new Notebook
