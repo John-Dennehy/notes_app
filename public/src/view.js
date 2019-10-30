@@ -1,11 +1,14 @@
 "use strict";
 
 var View = (function () {
+
+  
   // Expose these functions via an interface while hiding
   // the implementation of the module within the function() block
   return {
-    refresh: function () {
+    refresh: function (notes) {
       clearNoteBox()
+      addToList(notes)
     },
 
     hideForm: function () {
@@ -16,16 +19,20 @@ var View = (function () {
       document.getElementById('note_content').value = ""
     }
 
-    function addToList(note) {
+    function addToList(notes) {
       var list = document.getElementById('populate_notes')
-      list.appendChild(createNoteHTML(note));
+      var index = notes.length
+      var note = notes[index-1]
+      list.appendChild(createNoteHTML(note, index));
       clearNoteBox()
     }
 
-    function createNoteHTML(note) {
+    function createNoteHTML(note, index) {
       var htmlElement = document.createElement('li');
+      htmlElement.setAttribute('id','list_note'+index)
       htmlElement.appendChild(document.createTextNode(note));
       return htmlElement
     }
 
 })();
+

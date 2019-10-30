@@ -1,6 +1,5 @@
 "use strict";
 
-
 (function () {
   
   function listenFor(element, event, callBack) {
