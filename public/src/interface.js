@@ -12,14 +12,17 @@ function getNote() {
 }
 
 function addNote() {
-  if !isEmpty(getNote()) {
+  var note = getNote()
+  if (!isEmpty(note)) {
     Notebook.add(note)
     View.refresh()
   }
 }
 
 function isEmpty(text) {
-  if (text.trim() === "" || text === null)
+  if (text.trim() === "" || text === null) {
+    return true
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
