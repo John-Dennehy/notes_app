@@ -42,5 +42,14 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   new Interface(document.getElementById('create_button'), document.getElementById('note_content'))
-  // listenFor(document.getElementById('create_button'), 'click', addNote)
 });
+
+  // function getHashValue() {
+  //   return location.hash.split("#")[1];
+  // }
+  
+  // function hashChange() {
+  //   View.showNote(getHashValue())
+  // }
+  
+
