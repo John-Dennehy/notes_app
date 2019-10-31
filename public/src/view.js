@@ -5,11 +5,11 @@
   // the implementation of the module within the function() block
   function View () {
     return {
-      refresh: function refresh (notes) {
-        clearNoteBox()
+      updateList: function updateList (notes) {
         addToList(notes)
       },
-      createNoteHTML: createNoteHTML
+      createNoteHTML: createNoteHTML,
+      showNote: showNote
     }
 
     function clearNoteBox () {
@@ -37,6 +37,12 @@
       htmlElement.setAttribute('href', '#' + index)
       htmlElement.appendChild(linkText)
       return htmlElement
+    }
+
+    function showNote(note) {
+      console.log('inside')
+      var htmlElement = document.getElementById('note-paragraph')
+      htmlElement.innerHTML = note
     }
   }
 
