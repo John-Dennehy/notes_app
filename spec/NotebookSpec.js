@@ -3,9 +3,15 @@ Describe("Notebook", function(){
 
   Describe('all', function(){
     It('returns all notes', function() {
-      notes = new Notebook
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      notes = new Notebook(SpyFactory)
       notes.add("Hello")
-      Demand("Hello").toBeAVassalOf(notes.all())
+      notes.add("Hello2")
+      Demand(notes.all().length).toBe(2)
+      Demand(spy).toBeAVassalOf(notes.all())
     });
   });
 
@@ -23,9 +29,17 @@ Describe("Notebook", function(){
   
   Describe('get', function() {
     It('gets the note at a given index', function() {
-      var notes = new Notebook
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      var notes = new Notebook(SpyFactory)
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      var notes = new Notebook(SpyFactory)
       notes.add("Hello World");
-
       Demand(notes.get(0)).toBe('Hello World')
     })
   })
