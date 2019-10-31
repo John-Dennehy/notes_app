@@ -14,6 +14,7 @@
 
       add: function(text) {
         var note = new noteConstructor(text)
+        console.log(note)
         return notes.push(note);
       },
       

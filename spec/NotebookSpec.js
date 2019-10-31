@@ -29,18 +29,13 @@ Describe("Notebook", function(){
   
   Describe('get', function() {
     It('gets the note at a given index', function() {
-      var spy = {}
-      function SpyFactory() {
-        return spy
-      }
-      var notes = new Notebook(SpyFactory)
-      var spy = {}
-      function SpyFactory() {
-        return spy
+      function SpyFactory(text) {
+        this.text = text
       }
       var notes = new Notebook(SpyFactory)
       notes.add("Hello World");
-      Demand(notes.get(0)).toBe('Hello World')
+      notes.add("Bye World");
+      Demand(notes.get(1).text).toBe("Bye World")
     })
   })
 });
