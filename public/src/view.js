@@ -1,8 +1,7 @@
 "use strict";
 
-var View = (function () {
-
-  
+var View = function () {
+ 
   // Expose these functions via an interface while hiding
   // the implementation of the module within the function() block
   return {
@@ -10,7 +9,6 @@ var View = (function () {
       clearNoteBox()
       addToList(notes)
     },
-
     hideForm: function () {
     }
   }
@@ -34,5 +32,6 @@ var View = (function () {
       return htmlElement
     }
 
-})();
+};
 
+var view = View();
