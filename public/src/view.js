@@ -9,8 +9,7 @@
         clearNoteBox()
         addToList(notes)
       },
-      hideForm: function () {
-      }
+      createNoteHTML: createNoteHTML
     }
 
     function clearNoteBox () {
