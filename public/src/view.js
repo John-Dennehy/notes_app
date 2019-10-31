@@ -28,7 +28,6 @@
     function createNoteHTML (note, index) {
       var htmlElement = document.createElement('li')
       htmlElement.setAttribute('id', 'list_note' + index)
-      console.log(titleLink(note, index))
       htmlElement.appendChild(titleLink(note, index))
       return htmlElement
     }
