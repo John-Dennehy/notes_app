@@ -8,19 +8,23 @@ Describe('Controller', function(){
         Demand(buttonBird.addEventListener).toHaveBeenSummoned();
     });
     Describe('addNote', function() {
+        var elementBird = document.createElement('a')
+        elementBird.value = 'Test Text'
+        notebook = {}
+        view = {}
+        var noteBird = {name: 'NoteBird'}
+        function NoteBirdConstructor(text) {
+            return noteBird
+        }
+        LittleBird(notebook, 'add') 
+        LittleBird(notebook, 'all') 
+        LittleBird(view, 'refresh') 
+        LittleBird(document, 'getElementById').andRespond(elementBird);
+
+        new Controller(NoteBirdConstructor)
+        elementBird.click()
         It ('add is called on notebook when button is clicked', function(){
-            var elementBird = document.createElement('a')
-            elementBird.value = 'Test Text'
-            notebook = {}
-            view = {}
-            LittleBird(notebook, 'add') 
-            LittleBird(notebook, 'all') 
-            LittleBird(view, 'refresh') 
-            LittleBird(document, 'getElementById').andRespond(elementBird);
-    
-            new Controller
-            elementBird.click()
-            Demand(notebook.add).toHaveBeenSummonedWith('Test Text')
+            Demand(notebook.add).toHaveBeenSummonedWith(noteBird)
         });
         It('gets the list of notes', function(){
             Demand(notebook.all).toHaveBeenSummoned()

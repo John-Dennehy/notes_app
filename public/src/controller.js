@@ -2,10 +2,10 @@
 
 (function (exports) {
   
-  function Controller() {
+  function Controller(NoteContstructor) {
+    var noteContstructor = NoteContstructor || Note
 
     function listenFor(element, event, callBack) {
-      console.log(element)
       element.addEventListener(event, function () {
         if (typeof callBack === "function") { callBack() }
       });
@@ -13,16 +13,17 @@
     
     function getNote() {
       var text = document.getElementById('note_content').value
-      return text
+      if (!isEmpty(text)) {
+        var note = new noteContstructor(text)
+        return note
+      }
     }
     
     function addNote() {
       var note = getNote()
-      if (!isEmpty(note)) {
-        notebook.add(note)
-        var notes = notebook.all()
-        view.refresh(notes)
-      }
+      notebook.add(note)
+      var notes = notebook.all()
+      view.refresh(notes)
     }
     
     function isEmpty(text) {

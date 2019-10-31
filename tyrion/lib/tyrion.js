@@ -77,7 +77,6 @@
     // },
     toHaveBeenSummoned: function() {
       try {
-        console.log(3)
         if (this.value.called === true) {
           li.setAttribute('class', 'pass')
           return true
@@ -125,12 +124,10 @@
       this.obj = obj
       this.method = method
       obj[`${method}`] = function(count) {
-        console.log(2)
         this[`${method}`].called = true
         this[`${method}`].args = arguments
       }
     } else {
-      console.log(1)
       return new LittleBird(obj, method)
     }
   }
