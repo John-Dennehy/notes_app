@@ -1,4 +1,7 @@
-'use strict';
+
+
+"use strict";
+
 
 (function (exports) {
   function Notebook () {
@@ -22,4 +25,5 @@
   exports.Notebook = Notebook
 })(this)
 
-var notebook = new Notebook()
+var notebook = new Notebook;
+
