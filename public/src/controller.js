@@ -39,5 +39,4 @@
 
 })(this);
 
-// var controller = new Controller;
   
