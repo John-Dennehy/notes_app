@@ -1,11 +1,11 @@
 "use strict";
 
 (function (exports) {
- 
+
   // Expose these functions via an interface while hiding
   // the implementation of the module within the function() block
-  function View() {  
-  
+  function View() {
+
     return {
       refresh: function refresh (notes) {
         clearNoteBox();
@@ -30,13 +30,13 @@
     function createNoteHTML(note, index) {
       var htmlElement = document.createElement('li');
       htmlElement.setAttribute('id','list_note'+index);
-      htmlElement.appendChild(document.createTextNode(note));
+      htmlElement.appendChild(document.createTextNode(note.title()));
       console.log(htmlElement)
       return htmlElement;
     }
 
   }
-   
+
   exports.View = View;
 
 })(this);
@@ -45,7 +45,7 @@ var view = new View;
 
 
 // var View = function () {
- 
+
 //   // Expose these functions via an interface while hiding
 //   // the implementation of the module within the function() block
 //   return {
@@ -79,4 +79,3 @@ var view = new View;
 // };
 
 // var view = View();
-
