@@ -17,12 +17,18 @@
 
     function addNote() {
       var text = getNote()
-      if (!isEmpty(text)) {
-        var note = new Note(text)
-        notebook.add(note)
-        var notes = notebook.all()
-        view.refresh(notes)
-      }
+      if (!isEmpty(text)) { insertNoteIntoNotebook(text) }
+    }
+
+    function insertNoteIntoNotebook(text) {
+      var note = new Note(text)
+      notebook.add(note)
+      sendNoteToView()
+    }
+
+    function sendNoteToView() {
+      var notes = notebook.all()
+      view.refresh(notes)
     }
 
     function isEmpty(text) {
