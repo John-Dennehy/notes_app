@@ -1,8 +1,9 @@
 "use strict";
 
 (function (exports) {
-
-  // function Interface() {
+  
+  function Controller(NoteContstructor) {
+    var noteContstructor = NoteContstructor || Note
 
     function listenFor(element, event, callBack) {
       element.addEventListener(event, function () {
@@ -21,7 +22,7 @@
     }
 
     function insertNoteIntoNotebook(text) {
-      var note = new Note(text)
+      var note = new noteContstructor(text)
       notebook.add(note)
       sendNoteToView()
     }
@@ -31,30 +32,33 @@
       view.refresh(notes)
     }
 
+    // function getNote() {
+    //   var text = document.getElementById('note_content').value
+    //   if (!isEmpty(text)) {
+    //     var note = new noteContstructor(text)
+    //     return note
+    //   }
+    // }
+    
+    // function addNote() {
+    //   var note = getNote()
+    //   notebook.add(note)
+    //   var notes = notebook.all()
+    //   view.refresh(notes)
+    // }
+    
     function isEmpty(text) {
       if (text.trim() === "" || text === null) {
         return true
       }
     }
+    
+    listenFor(document.getElementById('create_button'), 'click', addNote);
 
-    // function getHashValue() {
-    //   return location.hash.split("#")[1];
-    // }
+  }
 
-    // function hashChange() {
-    //   View.showNote(getHashValue())
-    // }
+  exports.Controller = Controller;
 
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log("I'm listening");
-      listenFor(document.getElementById('create_button'), 'click', addNote)
-      // listenFor(window,'hashchange', checkHash)
-    });
+})(this);
 
-
-
-  // exports.Interface = Interface;
-
-})();
-
-// var interface = new Interface;
+  
