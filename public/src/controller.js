@@ -31,10 +31,7 @@
       }
     }
     
-    document.addEventListener('DOMContentLoaded', function () {
-      console.log("I'm listening");
-      listenFor(document.getElementById('create_button'), 'click', addNote)
-    });
+    listenFor(document.getElementById('create_button'), 'click', addNote);
 
   }
 
@@ -42,5 +39,5 @@
 
 })(this);
 
-var controller = new Controller;
+// var controller = new Controller;
   
