@@ -1,28 +1,41 @@
+
 Describe("Notebook", function(){
 
   Describe('all', function(){
     It('returns all notes', function() {
-      notes = new Notebook
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      notes = new Notebook(SpyFactory)
       notes.add("Hello")
-      Demand("Hello").toBeAVassalOf(notes.all())
+      notes.add("Hello2")
+      Demand(notes.all().length).toBe(2)
+      Demand(spy).toBeAVassalOf(notes.all())
     });
   });
 
   Describe('add', function(){
     It('creates a new note', function() {
-      var notes = new Notebook
+      var spy = {}
+      function SpyFactory() {
+        return spy
+      }
+      var notes = new Notebook(SpyFactory)
       notes.add("Hello World");
-      
-      Demand("Hello World").toBeAVassalOf(notes.all())
+      Demand(spy).toBeAVassalOf(notes.all())
     });
   });
   
   Describe('get', function() {
     It('gets the note at a given index', function() {
-      var notes = new Notebook
+      function SpyFactory(text) {
+        this.text = text
+      }
+      var notes = new Notebook(SpyFactory)
       notes.add("Hello World");
-
-      Demand(notes.get(0)).toBe('Hello World')
+      notes.add("Bye World");
+      Demand(notes.get(1).text).toBe("Bye World")
     })
   })
 });

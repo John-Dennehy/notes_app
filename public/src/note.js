@@ -2,12 +2,21 @@
 (function(exports){
 
   function Note(text) {
-    this.content = text;
-  }
+    var content = text;
 
-  Note.prototype.title = function(){
-    return this.content.slice(0,20) + "..."
+    return {
+      content: function(){
+        return content
+      },
+      title: function() {
+        return content.slice(0,20) + "...";
+      },   
+    }
+
   }
+  // Note.prototype.title = function(){
+  //   return this.content.slice(0,20) + "..."
+  // }
 
   exports.Note = Note;
 
