@@ -30,9 +30,14 @@
     function createNoteHTML(note, index) {
       var htmlElement = document.createElement('li');
       htmlElement.setAttribute('id','list_note'+index);
-      htmlElement.appendChild(document.createTextNode(note.title()));
-      console.log(htmlElement)
+      htmlElement.appendChild(document.createTextNode(titleLink(note, index)));
       return htmlElement;
+    }
+
+    function titleLink(note, index) {
+      var htmlElement = document.createElement('a');
+      htmlElement.setAttribute('href','#'+index);
+      return htmlElement
     }
 
   }
