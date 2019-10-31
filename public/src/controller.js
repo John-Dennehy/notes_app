@@ -2,9 +2,10 @@
 
 (function (exports) {
   
-  // function Interface() {
+  function Controller() {
 
     function listenFor(element, event, callBack) {
+      console.log(element)
       element.addEventListener(event, function () {
         if (typeof callBack === "function") { callBack() }
       });
@@ -30,25 +31,16 @@
       }
     }
     
-    // function getHashValue() {
-    //   return location.hash.split("#")[1];
-    // }
-    
-    // function hashChange() {
-    //   View.showNote(getHashValue())
-    // }
-    
     document.addEventListener('DOMContentLoaded', function () {
       console.log("I'm listening");
       listenFor(document.getElementById('create_button'), 'click', addNote)
-      // listenFor(window,'hashchange', checkHash)
     });
 
+  }
 
+  exports.Controller = Controller;
 
-  // exports.Interface = Interface;
+})(this);
 
-})();
-
-// var interface = new Interface;
+var controller = new Controller;
   
