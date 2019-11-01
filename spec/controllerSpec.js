@@ -10,19 +10,21 @@ Describe('Controller', function(){
     Describe('addNote', function() {
         var elementBird = document.createElement('a')
         elementBird.value = 'Test Text'
+        console.log(elementBird.value)
         notebook = {}
         view = {}
         var noteBird = {name: 'NoteBird'}
         function NoteBirdConstructor(text) {
             return noteBird
         }
-        LittleBird(notebook, 'add') 
-        LittleBird(notebook, 'all') 
-        LittleBird(view, 'refresh') 
+        LittleBird(notebook, 'add')
+        LittleBird(notebook, 'all')
+        LittleBird(view, 'addToList')
         LittleBird(document, 'getElementById').andRespond(elementBird);
 
         new Controller(NoteBirdConstructor)
         elementBird.click()
+        console.log(elementBird.click())
         It ('add is called on notebook when button is clicked', function(){
             Demand(notebook.add).toHaveBeenSummonedWith(noteBird)
         });
