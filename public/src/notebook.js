@@ -1,7 +1,4 @@
-
-
 "use strict";
-
 
 (function (exports) {
   function Notebook () {

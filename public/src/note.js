@@ -14,12 +14,8 @@
     }
 
   }
-  // Note.prototype.title = function(){
-  //   return this.content.slice(0,20) + "..."
-  // }
 
   exports.Note = Note;
 
 })(this);
 
-// var Note = new Note;
