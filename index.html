@@ -7,8 +7,10 @@
       <ul id="populate_notes"></ul>
     </div>
     <div id="create_note">
-      <textarea id="note_content" placeholder="add a note"></textarea>
-      <button id="create_button">Create</button>
+      <form id="note-form" action="#notes/new" method="post">
+        <textarea id="note_content" placeholder="add a note" form ='note-form' name="note-text"></textarea>
+        <input type="submit" id="create_button" value="Create">
+      </form>
     </div>
     <div id="display_note">
       <p id= 'note-paragraph'></p>

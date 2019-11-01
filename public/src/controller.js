@@ -6,30 +6,26 @@
     var noteContstructor = NoteContstructor || Note
 
     function listenFor(element, event, callBack) {
-      element.addEventListener(event, function () {
-        if (typeof callBack === "function") { callBack() }
+      element.addEventListener(event, function (event) {
+        if (typeof callBack === "function") { callBack(event) }
       });
     }
 
-    function noteContent() {
-      var text = document.getElementById('note_content').value
-      return text
-    }
-
-    function addNote() {
-      var text = noteContent()
+    function addNote(event) {
+      event.preventDefault()
+      var text = event.target[0].value
       if (!isEmpty(text)) { insertNoteIntoNotebook(text) }
     }
 
     function insertNoteIntoNotebook(text) {
-      var note = new noteContstructor(text)
-      notebook.add(note)
-      sendNoteToView()
+      var note = new noteContstructor(text);
+      notebook.add(note);
+      sendNoteToView();
     }
 
     function sendNoteToView() {
       var notes = notebook.all()
-      view.updateList(notes)
+      view.addToList(notes)
     }
 
     function retrieveNote() {
@@ -63,7 +59,7 @@
       }
     }
 
-    listenFor(document.getElementById('create_button'), 'click', addNote);
+    listenFor(document.getElementById('note-form'), 'submit', addNote);
     listenFor(window, 'hashchange', retrieveNote);
 
   }

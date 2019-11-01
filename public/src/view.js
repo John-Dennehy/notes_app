@@ -5,9 +5,7 @@
   // the implementation of the module within the function() block
   function View () {
     return {
-      updateList: function updateList (notes) {
-        addToList(notes)
-      },
+      addToList: addToList,
       createNoteHTML: createNoteHTML,
       showNote: showNote
     }
