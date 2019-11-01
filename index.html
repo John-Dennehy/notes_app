@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head></head>
+  <head>
+    <link rel="stylesheet" href="./public/src/style.css" />
+  </head>
   <body>
-    <div id="display_notes">
-      <h2 id="all_notes_title">Notes</h2>
-      <ul id="populate_notes"></ul>
+    <div class="wrapper">
+      <header>
+        <h1>My generic-brand sticky-notes</h1>
+      </header>
+      <div id="create_note">
+        <form id="note-form" action="#notes/new" method="post">
+          <h2 id="note-form-title">Add New Note</h2>
+          <textarea
+            id="note_content"
+            placeholder="add a note"
+            form="note-form"
+            name="note-text"
+          ></textarea> <br>
+          <input type="submit" id="create_button" value="Create" />
+        </form>
+      </div>
+      <div id="display_notes">
+        <h2 id="all_notes_title">My Notes</h2>
+        <ul id="populate_notes"></ul>
+      </div>
+      <footer>
+        <h3><a href="https://github.com/JDtheGeek/notes_app" target="_blank">Note App on Github</a></h3>
+      </footer>
     </div>
-    <div id="create_note">
-      <form id="note-form" action="#notes/new" method="post">
-        <textarea id="note_content" placeholder="add a note" form ='note-form' name="note-text"></textarea>
-        <input type="submit" id="create_button" value="Create">
-      </form>
-    </div>
-    <div id="display_note">
-      <p id= 'note-paragraph'></p>
-    </div>
+    <!-- Scripts -->
     <script src="./public/src/note.js"></script>
     <script src="./public/src/notebook.js"></script>
     <script src="./public/src/controller.js"></script>
     <script src="./public/src/view.js"></script>
     <script src="./public/src/index.js"></script>
-    <footer></footer>
   </body>
 </html>
