@@ -9,17 +9,16 @@
         return content
       },
       title: function() {
+        if (content.length > 20){
         return content.slice(0,20) + "...";
+        }
+        return content
       },
     }
 
   }
-  // Note.prototype.title = function(){
-  //   return this.content.slice(0,20) + "..."
-  // }
 
   exports.Note = Note;
 
 })(this);
 
-// var Note = new Note;

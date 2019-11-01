@@ -35,23 +35,8 @@
     }
 
     function getNoteIndexFromUrl(location) {
-      return location.hash.split('#')[1];
+      return location.hash.split('#note')[1];
     }
-
-    // function getNote() {
-    //   var text = document.getElementById('note_content').value
-    //   if (!isEmpty(text)) {
-    //     var note = new noteContstructor(text)
-    //     return note
-    //   }
-    // }
-
-    // function addNote() {
-    //   var note = getNote()
-    //   notebook.add(note)
-    //   var notes = notebook.all()
-    //   view.refresh(notes)
-    // }
 
     function isEmpty(text) {
       if (text.trim() === "" || text === null) {
