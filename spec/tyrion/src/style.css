@@ -40,7 +40,7 @@ header .logo img {
   max-width: 4em;
 }
 
-#test-results {
+.test-results {
   height: auto;
   padding-top: 1em;
   padding-left: 10%;
