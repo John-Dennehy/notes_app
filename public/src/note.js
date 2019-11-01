@@ -9,7 +9,10 @@
         return content
       },
       title: function() {
+        if (content.length > 20){
         return content.slice(0,20) + "...";
+        }
+        return content
       },
     }
 
