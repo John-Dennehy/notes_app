@@ -112,7 +112,6 @@
         li.setAttribute('class', 'fail')
         var feedback = document.createElement('p')
         feedback.innerHTML = `Demanded the spy to be summoned with '${Object.values(arguments)}' but they obtained '${Object.values(this.value.args)}'`;
-        console.log(Object.values(arguments))
         li.appendChild(feedback)
         return false
       }

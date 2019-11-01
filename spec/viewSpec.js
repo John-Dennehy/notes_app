@@ -6,7 +6,6 @@
       var note = {
         title: function() {return 'Hello'}
       }
-      console.log(view.createNoteHTML(note, 0))
       Demand(view.createNoteHTML(note, 0).innerHTML).toBe(`<a href="#0">Hello</a>`)
     });
   });

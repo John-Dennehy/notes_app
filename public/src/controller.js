@@ -58,7 +58,6 @@
         return true
       }
     }
-
     listenFor(document.getElementById('note-form'), 'submit', addNote);
     listenFor(window, 'hashchange', retrieveNote);
 
